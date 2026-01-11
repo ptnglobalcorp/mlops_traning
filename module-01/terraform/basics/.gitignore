@@ -1,0 +1,28 @@
+# Terraform files
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+crash.log
+crash.*.log
+terraform.tfplan
+*.tfbackup
+.terraform.tfstate.backup
+
+# LocalStack data
+localstack-data/
+
+# Override files
+override.tf
+override.tf.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
