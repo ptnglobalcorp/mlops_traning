@@ -7,6 +7,22 @@
 #   3. Start LocalStack: docker compose up -d
 #   4. View logs: docker compose logs -f localstack
 #   5. Stop LocalStack: docker compose down
+#
+# AWS CLI Configuration (Required):
+#   Configure AWS CLI with test credentials for LocalStack:
+#   - Option 1 (Environment variables):
+#       export AWS_ACCESS_KEY_ID=test
+#       export AWS_SECRET_ACCESS_KEY=test
+#       export AWS_REGION=us-east-1
+#       aws --endpoint-url=http://localhost:4566 s3 ls
+#
+#   - Option 2 (AWS profile - recommended):
+#       aws configure set aws_access_key_id test --profile localstack
+#       aws configure set aws_secret_access_key test --profile localstack
+#       aws configure set region us-east-1 --profile localstack
+#       aws --profile localstack --endpoint-url=http://localhost:4566 s3 ls
+#
+#   Note: For S3 pre-signed URLs to work, credentials must be set to "test"
 
 # Define Docker volumes for data persistence
 volumes:
@@ -17,71 +33,50 @@ volumes:
 services:
   localstack:
     container_name: ${LOCALSTACK_CONTAINER_NAME:-localstack-main}
-    image: ${LOCALSTACK_IMAGE:-localstack/localstack:latest}
+    image: ${LOCALSTACK_IMAGE:-localstack/localstack:4.12.0}
     ports:
       # LocalStack Gateway (Edge Port)
-      - "127.0.0.1:${LOCALSTACK_EDGE_PORT:-4566}:4566"
+      - "127.0.0.1:4566:4566"
       # External services port range
       - "127.0.0.1:4510-4559:4510-4559"
     environment:
       # === Core Configuration ===
       # Enable/disable debug mode (0 or 1)
       - DEBUG=${DEBUG:-0}
-      # Enable/disable legacy behavior (0 or 1)
-      - PROVIDER_LEGACY_FLAGS=${LOCALSTACK_PROVIDER_LEGACY_FLAGS:-1}
 
-      # === Services to Enable ===
-      # Comma-separated list of services or "all" for all services
-      - SERVICES=${LOCALSTACK_SERVICES:-all}
+      # === Services Configuration ===
+      # In LocalStack 4.x, services are loaded on-demand by default
+      # No need to specify SERVICES variable - deprecated in 4.x
 
       # === Persistence ===
-      # Enable persistence (0 or 1)
+      # Enable persistence (0 or 1) - state is stored in Docker volume
       - PERSISTENCE=${PERSISTENCE:-1}
-      - DATA_DIR=${LOCALSTACK_DATA_DIR:-/tmp/localstack/data}
 
       # === Network Configuration ===
       # DNS address for LocalStack (0 for default)
       - DNS_ADDRESS=${DNS_ADDRESS:-0}
 
-      # === Security ===
-      # Disable SSL certificate verification (for development only)
-      - DISABLE_SSL_CHECKS=${DISABLE_SSL_CHECKS:-1}
-
-      # === Edge Configuration ===
-      # Edge port for LocalStack
-      - EDGE_PORT=${LOCALSTACK_EDGE_PORT:-4566}
-
-      # === Lambda Configuration ===
-      # Lambda executor (docker, docker-reuse, or local)
-      - LAMBDA_EXECUTOR=${LAMBDA_EXECUTOR:-docker}
-
       # === LocalStack Pro (Optional) ===
       # Uncomment and add your auth token to enable Pro features
       # - LOCALSTACK_AUTH_TOKEN=${LOCALSTACK_AUTH_TOKEN}
 
-      # === Development/Testing ===
-      # Return empty responses instead of errors for missing resources
-      - EMPTY_PORT_ON_START=${EMPTY_PORT_ON_START:-1}
-      # Enforce SSL verification (set to 1 for production-like behavior)
-      - ENFORCE_SSL_CHECKS=${ENFORCE_SSL_CHECKS:-0}
-
     volumes:
       # Persist LocalStack data in a Docker volume
-      - localstack-data:${LOCALSTACK_DATA_DIR:-/tmp/localstack/data}
+      # IMPORTANT: Mount to /var/lib/localstack (not /data) for persistence to work
+      # State is stored in /var/lib/localstack/state subdirectory
+      - localstack-data:/var/lib/localstack
       # Mount Docker socket for Docker-in-Docker (required for Lambda and ECS)
-      # Windows (Docker Desktop): use ${DOCKER_SOCKET_PATH}
-      # Linux/macOS: defaults to /var/run/docker.sock
-      - ${DOCKER_SOCKET_PATH:-/var/run/docker.sock}:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock
 
     # Resource limits (adjust based on your system)
     deploy:
       resources:
         limits:
-          cpus: ${LOCALSTACK_CPU_LIMIT:-2.0}
-          memory: ${LOCALSTACK_MEMORY_LIMIT:-2g}
+          cpus: 2.0
+          memory: 2g
         reservations:
-          cpus: ${LOCALSTACK_CPU_RESERVATION:-0.5}
-          memory: ${LOCALSTACK_MEMORY_RESERVATION:-512m}
+          cpus: 0.5
+          memory: 512m
 
     # Restart policy
     restart: unless-stopped
