@@ -29,7 +29,7 @@ data "aws_region" "current" {}
 # =============================================================================
 
 resource "random_string" "unique_suffix" {
-  length  = 8
+  length  = 4
   special = false
   upper   = false
 }
@@ -39,7 +39,7 @@ resource "random_string" "unique_suffix" {
 # =============================================================================
 
 resource "aws_s3_bucket" "models" {
-  bucket_prefix = "${local.name_prefix}-ml-models-${random_string.unique_suffix.result}-"
+  bucket = "${var.environment}-ml-models-${random_string.unique_suffix.result}"
 
   tags = merge(local.common_tags, {
     Purpose = "ml-model-storage"

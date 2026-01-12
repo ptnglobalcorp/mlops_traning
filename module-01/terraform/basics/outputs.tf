@@ -9,7 +9,7 @@ output "account_id" {
 
 output "aws_region" {
   description = "AWS region where resources were created"
-  value       = data.aws_region.current.name
+  value       = var.aws_region
 }
 
 output "environment" {
