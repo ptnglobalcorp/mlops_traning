@@ -11,7 +11,7 @@ This guide has been tested with the following tool versions. For consistency, we
 | **Docker** | 28.x+ | `docker --version` |
 | **Docker Compose** | v2.24.0+ | `docker compose version` |
 | **AWS CLI** | v2.22.0+ | `aws --version` |
-| **LocalStack** | 4.0.0+ | `docker run localstack/localstack:latest` |
+| **LocalStack** | 4.12.0+ | `docker run localstack/localstack:latest` |
 | **Python** | 3.9+ (optional) | `python --version` |
 
 ### Installation Links
@@ -50,13 +50,17 @@ docker run --rm -it -p 4566:4566 -p 4510-4559:4510-4559 localstack/localstack
 
 ### Option 2: Docker Compose (Recommended with .env file)
 
-**New for 2026**: Use the provided docker-compose.yml with .env.example for easy configuration!
+Use the provided docker-compose.yml with .env.example for easy configuration!
 
 **Features**:
-- Docker volume for data persistence (cross-platform compatible)
-- Windows support via configurable Docker socket path
+- Docker volume for data persistence (Pro feature - see notes below)
 - Environment variable configuration via `.env` file
 - Resource limits and health checks pre-configured
+- Cross-platform compatible
+
+**Important Notes**:
+- **Persistence is Pro-only**: Community Edition is ephemeral by design. State is not persisted across container restarts.
+- **Services load on-demand**: In LocalStack 4.x, services are loaded automatically when accessed - no need to specify them.
 
 ```bash
 # Navigate to LocalStack directory
@@ -118,51 +122,57 @@ docker run --rm -v localstack-data:/data -v $(pwd):/backup alpine tar xzf /backu
 **Or create your own `docker-compose.yml`**:
 
 ```yaml
-services:
-  localstack:
-    image: localstack/localstack:latest
-    container_name: localstack_main
-    ports:
-      - "4566:4566"
-      - "4510-4559:4510-4559"
-    environment:
-      - SERVICES=s3,lambda,dynamodb,kinesis,iam,apigateway,sns,sqs,logs
-      - DEBUG=1
-      - DATA_DIR=/tmp/localstack/data
-    volumes:
-      # Use Docker volume instead of bind mount for cross-platform compatibility
-      - localstack-data:/tmp/localstack/data
-      # Docker socket (Linux/macOS default)
-      - /var/run/docker.sock:/var/run/docker.sock
-
 volumes:
   localstack-data:
     driver: local
+
+services:
+  localstack:
+    image: localstack/localstack:4.12.0
+    container_name: localstack-main
+    ports:
+      - "127.0.0.1:4566:4566"
+      - "127.0.0.1:4510-4559:4510-4559"
+    environment:
+      # Core configuration
+      - DEBUG=0
+      # Persistence (Pro-only feature - Community Edition is ephemeral)
+      - PERSISTENCE=1
+    volumes:
+      - localstack-data:/var/lib/localstack
+      - /var/run/docker.sock:/var/run/docker.sock
 ```
 
 **Notes**:
 - The `version` field in docker-compose.yml is deprecated and no longer required in Docker Compose v2+
-- Data is stored in a Docker volume named `localstack-data` for better cross-platform support
+- `SERVICES` variable is deprecated in 4.x - services load on-demand automatically
+- `DATA_DIR` variable is deprecated in 4.x - state is stored in `/var/lib/localstack`
+- Volume mount must be to `/var/lib/localstack` for persistence to work (Pro-only)
 - On Windows with Docker Desktop, the Docker socket is usually handled automatically
 
 ## Configure AWS CLI
 
+LocalStack requires AWS credentials to be configured. Use test credentials for local development:
+
 ```bash
-# Create LocalStack profile
-aws configure --profile localstack
+# Option 1: Create a dedicated LocalStack profile (recommended)
+aws configure set aws_access_key_id test --profile localstack
+aws configure set aws_secret_access_key test --profile localstack
+aws configure set region us-east-1 --profile localstack
 
-# Enter any values for prompts
-AWS Access Key ID: test
-AWS Secret Access Key: test
-Default region name: us-east-1
-Default output format: json
+# Verify configuration
+aws --profile localstack configure list
 
-# Set environment variable
-export AWS_ENDPOINT_URL=http://localhost:4566
+# Option 2: Set environment variables
+export AWS_ACCESS_KEY_ID=test
+export AWS_SECRET_ACCESS_KEY=test
+export AWS_REGION=us-east-1
 
-# Or add to each command
-# aws --endpoint-url=http://localhost:4566 <service> <command>
+# Use with LocalStack endpoint
+aws --profile localstack --endpoint-url=http://localhost:4566 s3 ls
 ```
+
+**Important**: For S3 pre-signed URLs to work correctly, credentials must be set to `test`/`test`.
 
 ## Verify Installation
 
@@ -223,7 +233,7 @@ zip function.zip handler.py
 # Create function
 aws --endpoint-url=http://localhost:4566 lambda create-function \
     --function-name my-function \
-    --runtime python3.9 \
+    --runtime python3.11 \
     --role arn:aws:iam::000000000000:role/test-role \
     --handler handler.lambda_handler \
     --zip-file fileb://function.zip
@@ -256,7 +266,7 @@ zip s3.zip s3_handler.py
 
 aws --endpoint-url=http://localhost:4566 lambda create-function \
     --function-name s3-processor \
-    --runtime python3.9 \
+    --runtime python3.11 \
     --role arn:aws:iam::000000000000:role/test-role \
     --handler s3_handler.lambda_handler \
     --zip-file fileb://s3.zip
@@ -556,8 +566,7 @@ echo "Starting LocalStack container..."
 docker run -d --name localstack_main \
     -p 4566:4566 \
     -p 4510-4559:4510-4559 \
-    -e SERVICES=s3,lambda,dynamodb,kinesis,iam,apigateway,sns,sqs \
-    localstack/localstack
+    localstack/localstack:4.12.0
 
 # Wait for LocalStack to be ready
 echo "Waiting for LocalStack to be ready..."
@@ -596,4 +605,4 @@ chmod +x setup-localstack.sh
 
 ---
 
-**Last Updated**: January 2026
+**Last Updated**: January 2025 | **LocalStack Version**: 4.12.0

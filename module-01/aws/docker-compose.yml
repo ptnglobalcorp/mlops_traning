@@ -61,8 +61,10 @@ services:
       # - LOCALSTACK_AUTH_TOKEN=${LOCALSTACK_AUTH_TOKEN}
 
     volumes:
-      # Persist LocalStack data in a Docker volume (stored at /var/lib/localstack/data)
-      - localstack-data:/var/lib/localstack/data
+      # Persist LocalStack data in a Docker volume
+      # IMPORTANT: Mount to /var/lib/localstack (not /data) for persistence to work
+      # State is stored in /var/lib/localstack/state subdirectory
+      - localstack-data:/var/lib/localstack
       # Mount Docker socket for Docker-in-Docker (required for Lambda and ECS)
       - /var/run/docker.sock:/var/run/docker.sock
 
