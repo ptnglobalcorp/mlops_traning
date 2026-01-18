@@ -33,8 +33,33 @@ export default defineConfig({
           items: [
             { text: 'Module Overview', link: '/module-01/README' },
             {
-              text: 'AWS Cloud Services',
+              text: 'Git for Teams',
               collapsed: false,
+              items: [
+                { text: 'Overview', link: '/module-01/git/README' },
+                { text: 'Git Basics', link: '/module-01/git/git-basics' },
+                { text: 'Understanding Git Areas', link: '/module-01/git/git-areas' },
+                { text: 'Repository Governance', link: '/module-01/git/repository-governance' },
+                {
+                  text: 'Branching Strategies',
+                  collapsed: true,
+                  items: [
+                    { text: 'Strategy Overview', link: '/module-01/git/branching-strategies' },
+                    { text: 'Trunk-Based Development', link: '/module-01/git/trunk-based' },
+                    { text: 'Git Flow', link: '/module-01/git/git-flow' },
+                    { text: 'GitHub Flow', link: '/module-01/git/github-flow' }
+                  ]
+                },
+                { text: 'Remote Operations', link: '/module-01/git/remote-operations' },
+                { text: 'Pull Requests & Code Review', link: '/module-01/git/pull-requests' },
+                { text: 'Merge Conflicts', link: '/module-01/git/merge-conflicts' },
+                { text: 'Team Conventions', link: '/module-01/git/team-conventions' },
+                { text: 'Workflow Examples', link: '/module-01/git/workflow-examples' }
+              ]
+            },
+            {
+              text: 'AWS Cloud Services',
+              collapsed: true,
               items: [
                 { text: 'AWS Overview', link: '/module-01/aws/README' },
                 { text: 'Cloud Concepts (Domain 1)', link: '/module-01/aws/cloud-concepts' },

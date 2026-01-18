@@ -18,17 +18,30 @@ This documentation follows a **hybrid structure**:
 
 ## Module 1: Infrastructure Prerequisites
 
-**Goal**: Master Docker, AWS, and Terraform fundamentals for MLOps
+**Goal**: Master Git, Docker, AWS, and Terraform fundamentals for MLOps
 
 ### Study Path
 
 | Order | Topic | Description | Lab Location |
 |-------|-------|-------------|--------------|
-| 1 | Docker Basics | Container fundamentals and Docker concepts | N/A (theory only for now) |
-| 2 | AWS | Cloud services, security, networking, and AI/ML | [`module-01/aws/`](../module-01/aws/) |
-| 3 | Terraform Basics | Infrastructure as Code fundamentals | [`module-01/terraform/basics/`](../module-01/terraform/basics/) |
+| 1 | Git for Teams | Version control, branching strategies, and team collaboration | [`module-01/git/`](../module-01/git/) |
+| 2 | Docker Basics | Container fundamentals and Docker concepts | N/A (theory only for now) |
+| 3 | AWS | Cloud services, security, networking, and AI/ML | [`module-01/aws/`](../module-01/aws/) |
+| 4 | Terraform Basics | Infrastructure as Code fundamentals | [`module-01/terraform/basics/`](../module-01/terraform/basics/) |
 
 ### Module 1 Documentation
+
+**Git for Teams:**
+- [Git Overview](module-01/git/README.md) - Complete Git collaboration guide
+- [Git Basics & Configuration](module-01/git/git-basics.md) - Essential commands and setup
+- [Understanding Git Areas](module-01/git/git-areas.md) - How Git manages files
+- [Branching Strategies](module-01/git/branching-strategies.md) - Compare workflows (Trunk-Based, Git Flow, GitHub Flow)
+- [Remote Operations](module-01/git/remote-operations.md) - Working with remotes
+- [Pull Requests & Code Review](module-01/git/pull-requests.md) - Collaboration process
+- [Merge Conflicts](module-01/git/merge-conflicts.md) - Resolving conflicts
+- [Repository Governance](module-01/git/repository-governance.md) - Team contribution models and ownership strategies
+- [Team Conventions](module-01/git/team-conventions.md) - Standards and best practices
+- [Workflow Examples](module-01/git/workflow-examples.md) - Real-world scenarios
 
 **Docker:**
 - [Docker Basics Guide](module-01/docker/basics.md)
@@ -51,6 +64,7 @@ This documentation follows a **hybrid structure**:
 
 | Lab | Description | Location |
 |-----|-------------|----------|
+| **Git for Teams** | Git practice exercises and examples | [`module-01/git/`](../module-01/git/) |
 | **LocalStack** | AWS services practice locally | [`module-01/aws/`](../module-01/aws/) |
 | **Terraform Basics** | Infrastructure as Code fundamentals | [`module-01/terraform/basics/`](../module-01/terraform/basics/) |
 | **Terraform Examples** | Example configurations | [`module-01/terraform/examples/`](../module-01/terraform/examples/) |
@@ -97,19 +111,28 @@ This documentation follows a **hybrid structure**:
 ### Example Study Workflow
 
 ```bash
-# 1. Read the conceptual guide
-cat docs/module-01/aws/README.md
+# 1. Read the conceptual guide (Git for Teams)
+cat docs/module-01/git/README.md
 
 # 2. Navigate to the lab
-cd module-01/aws
+cd module-01/git
 
-# 3. Start the lab environment
+# 3. Practice Git workflows
+# Create a practice repository, branches, merges, etc.
+
+# 4. Read AWS guide
+cat docs/module-01/aws/README.md
+
+# 5. Navigate to the lab
+cd ../aws
+
+# 6. Start the lab environment
 docker compose up -d
 
-# 4. Practice the exercises
+# 7. Practice the exercises
 aws --endpoint-url=http://localhost:4566 s3 mb s3://my-bucket
 
-# 5. Clean up
+# 8. Clean up
 docker compose down -v
 ```
 
@@ -120,6 +143,9 @@ docker compose down -v
 ### External References
 
 **General:**
+- [Git Documentation](https://git-scm.com/doc)
+- [GitHub Flow Guide](https://guides.github.com/introduction/flow/)
+- [Git Flow Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
 - [Docker Documentation](https://docs.docker.com/)
 - [Terraform Documentation](https://developer.hashicorp.com/terraform)
 - [LocalStack Documentation](https://docs.localstack.cloud/)
@@ -130,6 +156,7 @@ docker compose down -v
 
 ### Internal Tools
 
+- [`module-01/git/`](../module-01/git/) - Git practice exercises and examples
 - [`module-01/aws/`](../module-01/aws/) - LocalStack lab environment
 - [`module-01/terraform/basics/`](../module-01/terraform/basics/) - Terraform practice
 - [`module-01/terraform/examples/`](../module-01/terraform/examples/) - Terraform examples
@@ -142,6 +169,7 @@ docker compose down -v
 Track your progress by checking off completed modules:
 
 ### Module 1: Infrastructure Prerequisites
+- [ ] Git for Teams (Basics, Branching Strategies, Collaboration)
 - [ ] Docker Basics
 - [ ] AWS (Cloud, Services, Security, AI/ML)
 - [ ] Terraform Basics

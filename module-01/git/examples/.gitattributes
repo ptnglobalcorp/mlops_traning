@@ -1,0 +1,113 @@
+# Git attributes examples
+# Controls how Git handles specific files
+
+# =============================================================================
+# Auto detect text files
+# =============================================================================
+* text=auto
+
+# =============================================================================
+# Line Endings
+# =============================================================================
+
+# Files that will always have CRLF line endings on checkout
+*.sln text eol=crlf
+*.vcxproj text eol=crlf
+*.props text eol=crlf
+
+# Files that will always have LF line endings on checkout
+*.sh text eol=lf
+*.py text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# =============================================================================
+# Binary Files
+# =============================================================================
+
+# Images
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary
+
+# Documents
+*.pdf binary
+*.doc binary
+*.docx binary
+*.xls binary
+*.xlsx binary
+*.ppt binary
+*.pptx binary
+
+# Fonts
+*.ttf binary
+*.otf binary
+*.eot binary
+*.woff binary
+*.woff2 binary
+
+# Archives
+*.zip binary
+*.tar.gz binary
+*.rar binary
+*.7z binary
+
+# =============================================================================
+# Programming Languages
+# =============================================================================
+
+# Python
+*.py text diff=python
+*.txt text
+
+# JavaScript
+*.js text diff=javascript
+*.jsx text diff=javascript
+*.ts text diff=typescript
+*.tsx text diff=typescript
+
+# Web
+*.html text diff=html
+*.css text diff=css
+*.scss text diff=css
+*.sass text diff=css
+*.less text diff=css
+
+# Config files
+*.json text
+*.xml text
+*.yaml text
+*.yml text
+*.toml text
+*.ini text
+*.conf text
+
+# =============================================================================
+# Diff Settings
+# =============================================================================
+
+# Use nicer diff for certain files
+*.md diff=markdown
+
+# =============================================================================
+# Merge Drivers
+# =============================================================================
+
+# Use custom merge driver for specific files
+# *.pbxproj merge=pbxproj
+# package.json merge=ours
+
+# =============================================================================
+# Language Settings
+# =============================================================================
+
+# linguist-generated
+# Mark generated files
+package-lock.json linguist-generated
+yarn.lock linguist-generated
+pnpm-lock.yaml linguist-generated
+Poetry.lock linguist-generated
+Cargo.lock linguist-generated
