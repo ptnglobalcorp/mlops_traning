@@ -91,6 +91,37 @@ By the end of this module, you will be able to:
 - [`module-01/terraform/examples/`](../../module-01/terraform/examples/) - Example configurations
 - [`module-01/terraform/exercises/`](../../module-01/terraform/exercises/) - Practice exercises
 
+### Step 4: Kubernetes for MLOps
+
+**Read:**
+- [K8s Overview](k8s/README.md) - Complete K8s for MLOps guide
+- [Why Kubernetes?](k8s/01-overview/README.md) - Why K8s for production workloads
+
+**Core Objects:**
+- [Object Model](k8s/02-key-concepts/core-objects/object-model.md) - K8s object model
+- [Namespaces](k8s/02-key-concepts/core-objects/namespaces.md) - Resource isolation
+- [Pods](k8s/02-key-concepts/core-objects/pods.md) - Smallest deployable unit
+- [Labels & Selectors](k8s/02-key-concepts/core-objects/labels-selectors.md) - Organizing objects
+
+**Workloads:**
+- [Workloads Overview](k8s/02-key-concepts/workloads/README.md) - Workload types
+- [Deployment](k8s/02-key-concepts/workloads/deployment.md) - Stateless applications
+- [StatefulSet](k8s/02-key-concepts/workloads/statefulset.md) - Stateful applications
+- [Job & CronJob](k8s/02-key-concepts/workloads/job.md) - Batch processing
+
+**Storage & Configuration:**
+- [Storage Overview](k8s/02-key-concepts/storage/README.md) - Persistent data
+- [Configuration Overview](k8s/02-key-concepts/configuration/README.md) - ConfigMaps and Secrets
+- [Network Overview](k8s/02-key-concepts/network/README.md) - Services and Ingress
+
+**Advanced Topics:**
+- [Architecture](k8s/03-architecture/README.md) - Control plane and nodes
+- [Helm](k8s/04-helm/README.md) - Package management
+- [Monitoring](k8s/05-monitoring/README.md) - Observability
+
+**Practice:**
+- [`module-01/k8s-labs/`](../../module-01/k8s-labs/) - K8s hands-on practice
+
 ## Prerequisites
 
 - Git installed ([Download](https://git-scm.com/downloads))

@@ -86,12 +86,69 @@ export default defineConfig({
               ]
             },
             {
-              text: 'Terraform',
+              text: 'Kubernetes for MLOps',
               collapsed: true,
               items: [
-                { text: 'Terraform Basics', link: '/module-01/terraform/basics' },
-                { text: 'Terraform Examples', link: '/module-01/terraform/examples' },
-                { text: 'Terraform Exercises', link: '/module-01/terraform/exercises' }
+                { text: 'Overview', link: '/module-01/k8s/README' },
+                { text: 'Why Kubernetes?', link: '/module-01/k8s/01-overview/README' },
+                {
+                  text: 'Key Concepts - Core Objects',
+                  collapsed: true,
+                  items: [
+                    { text: 'Overview', link: '/module-01/k8s/02-key-concepts/core-objects/README' },
+                    { text: 'Object Model', link: '/module-01/k8s/02-key-concepts/core-objects/object-model' },
+                    { text: 'Namespaces', link: '/module-01/k8s/02-key-concepts/core-objects/namespaces' },
+                    { text: 'Pods', link: '/module-01/k8s/02-key-concepts/core-objects/pods' },
+                    { text: 'Labels & Selectors', link: '/module-01/k8s/02-key-concepts/core-objects/labels-selectors' }
+                  ]
+                },
+                {
+                  text: 'Key Concepts - Workloads',
+                  collapsed: true,
+                  items: [
+                    { text: 'Overview', link: '/module-01/k8s/02-key-concepts/workloads/README' },
+                    { text: 'ReplicaSet', link: '/module-01/k8s/02-key-concepts/workloads/replicaset' },
+                    { text: 'Deployment', link: '/module-01/k8s/02-key-concepts/workloads/deployment' },
+                    { text: 'DaemonSet', link: '/module-01/k8s/02-key-concepts/workloads/daemonset' },
+                    { text: 'StatefulSet', link: '/module-01/k8s/02-key-concepts/workloads/statefulset' },
+                    { text: 'Job', link: '/module-01/k8s/02-key-concepts/workloads/job' },
+                    { text: 'CronJob', link: '/module-01/k8s/02-key-concepts/workloads/cronjob' }
+                  ]
+                },
+                {
+                  text: 'Key Concepts - Storage',
+                  collapsed: true,
+                  items: [
+                    { text: 'Overview', link: '/module-01/k8s/02-key-concepts/storage/README' }
+                  ]
+                },
+                {
+                  text: 'Key Concepts - Configuration',
+                  collapsed: true,
+                  items: [
+                    { text: 'Overview', link: '/module-01/k8s/02-key-concepts/configuration/README' }
+                  ]
+                },
+                {
+                  text: 'Key Concepts - Network',
+                  collapsed: true,
+                  items: [
+                    { text: 'Overview', link: '/module-01/k8s/02-key-concepts/network/README' }
+                  ]
+                },
+                {
+                  text: 'Architecture',
+                  collapsed: true,
+                  items: [
+                    { text: 'Overview', link: '/module-01/k8s/03-architecture/README' },
+                    { text: 'Control Plane', link: '/module-01/k8s/03-architecture/control-plane' },
+                    { text: 'Node Components', link: '/module-01/k8s/03-architecture/node-components' },
+                    { text: 'Optional Services', link: '/module-01/k8s/03-architecture/optional-services' },
+                    { text: 'Networking Model', link: '/module-01/k8s/03-architecture/networking-model' }
+                  ]
+                },
+                { text: 'Helm Package Manager', link: '/module-01/k8s/04-helm/README' },
+                { text: 'Monitoring & Observability', link: '/module-01/k8s/05-monitoring/README' }
               ]
             }
           ]
