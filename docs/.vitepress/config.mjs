@@ -16,6 +16,7 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Study Guide', link: '/README' },
       { text: 'Module 1', link: '/module-01/README' },
+      { text: 'Module 3', link: '/module-03/README' },
     ],
 
     // Sidebar configuration
@@ -92,6 +93,70 @@ export default defineConfig({
                 { text: 'Terraform Basics', link: '/module-01/terraform/basics' },
                 { text: 'Terraform Examples', link: '/module-01/terraform/examples' },
                 { text: 'Terraform Exercises', link: '/module-01/terraform/exercises' }
+              ]
+            }
+          ]
+        },
+        {
+          text: 'Module 3: Deployment and Operation',
+          collapsed: false,
+          items: [
+            { text: 'Module Overview', link: '/module-03/README' },
+            {
+              text: 'Testing',
+              collapsed: true,
+              items: [
+                { text: 'Overview', link: '/module-03/testing/unit/README' },
+              ]
+            },
+            {
+              text: 'CI/CD',
+              collapsed: true,
+              items: [
+                { text: 'Overview', link: '/module-03/cicd/github-actions/README' },
+              ]
+            },
+            {
+              text: 'Monitoring & Observability',
+              collapsed: false,
+              items: [
+                { text: 'Quick Start with intro-to-mltp', link: '/module-03/monitoring/README' },
+                {
+                  text: 'Grafana',
+                  collapsed: false,
+                  items: [
+                    { text: 'Overview & Architecture', link: '/module-03/monitoring/grafana' },
+                  ]
+                },
+                {
+                  text: 'Grafana Mimir (Metrics)',
+                  collapsed: false,
+                  items: [
+                    { text: 'Overview & Architecture', link: '/module-03/monitoring/mimir' },
+                  ]
+                },
+                {
+                  text: 'Grafana Loki (Logs)',
+                  collapsed: false,
+                  items: [
+                    { text: 'Overview & Architecture', link: '/module-03/monitoring/loki' },
+                  ]
+                },
+                {
+                  text: 'Grafana Tempo (Traces)',
+                  collapsed: false,
+                  items: [
+                    { text: 'Overview & Architecture', link: '/module-03/monitoring/tempo' },
+                  ]
+                },
+                {
+                  text: 'Grafana Pyroscope (Profiles)',
+                  collapsed: false,
+                  items: [
+                    { text: 'Overview & Architecture', link: '/module-03/monitoring/pyroscope' },
+                  ]
+                },
+                { text: 'Quickstart Guide', link: '/module-03/monitoring/quickstart' },
               ]
             }
           ]
