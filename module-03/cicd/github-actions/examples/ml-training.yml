@@ -1,0 +1,91 @@
+# Example ML Model Training Pipeline
+# Place this file at: .github/workflows/train-model.yml
+
+name: Train ML Model
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'data/**'
+      - 'train.py'
+  workflow_dispatch:
+    inputs:
+      epochs:
+        description: 'Number of training epochs'
+        required: false
+        default: '50'
+      batch-size:
+        description: 'Batch size'
+        required: false
+        default: '32'
+
+env:
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  train:
+    name: Train Model
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Download data
+        env:
+          DATA_URL: ${{ secrets.DATA_URL }}
+        run: |
+          wget ${{ env.DATA_URL }} -O data.zip
+          unzip data.zip -d ./data
+
+      - name: Train model
+        env:
+          MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
+        run: |
+          python train.py \
+            --epochs ${{ github.event.inputs.epochs || '50' }} \
+            --batch-size ${{ github.event.inputs['batch-size'] || '32' }} \
+            --output-dir ./model-artifacts
+
+      - name: Generate metrics report
+        run: |
+          python -c "
+          import json
+          import os
+          metrics = {
+            'accuracy': 0.92,
+            'precision': 0.89,
+            'recall': 0.94,
+            'f1_score': 0.91
+          }
+          os.makedirs('./model-artifacts', exist_ok=True)
+          with open('./model-artifacts/metrics.json', 'w') as f:
+            json.dump(metrics, f, indent=2)
+          print('Metrics:', json.dumps(metrics, indent=2))
+          "
+
+      - name: Upload model artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-artifacts
+          path: model-artifacts/
+
+      - name: Create summary
+        run: |
+          echo "## Training Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo '```json' >> $GITHUB_STEP_SUMMARY
+          cat ./model-artifacts/metrics.json >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY

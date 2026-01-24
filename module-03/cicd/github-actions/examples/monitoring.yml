@@ -1,0 +1,93 @@
+# Example Model Monitoring Workflow
+# Place this file at: .github/workflows/monitoring.yml
+
+name: Model Monitoring
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Every 6 hours
+  workflow_dispatch:
+
+env:
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  monitor:
+    name: Check Model Health
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install evidently pandas
+
+      - name: Fetch prediction data
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          aws s3 sync s3://my-bucket/predictions/ ./predictions/ \
+            --exclude "*" --include "last-24h/*"
+
+      - name: Run data drift detection
+        run: |
+          python monitor/detect_drift.py \
+            --baseline ./baseline/train_stats.json \
+            --current ./predictions/last-24h/ \
+            --output ./drift_report.json
+
+      - name: Check model performance
+        run: |
+          python monitor/check_performance.py \
+            --predictions ./predictions/last-24h/ \
+            --threshold 0.75 \
+            --output ./performance_report.json
+
+      - name: Generate monitoring dashboard
+        run: |
+          python monitor/generate_dashboard.py \
+            --drift ./drift_report.json \
+            --performance ./performance_report.json \
+            --output ./monitoring_dashboard.html
+
+      - name: Upload monitoring report
+        uses: actions/upload-artifact@v4
+        with:
+          name: monitoring-report
+          path: |
+            monitoring_dashboard.html
+            drift_report.json
+            performance_report.json
+
+      - name: Fail if drift detected
+        run: |
+          DRIFT_SCORE=$(cat ./drift_report.json | jq -r '.drift_score')
+          if (( $(echo "$DRIFT_SCORE > 0.6" | bc -l) )); then
+            echo "Data drift detected: $DRIFT_SCORE"
+            exit 1
+          fi
+          echo "No significant drift detected"
+
+      - name: Create issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '⚠️ Model Drift Detected',
+              body: 'Data drift or performance degradation detected.\n\nRun: ' + context.payload.repository.html_url + '/actions/runs/' + context.runId,
+              labels: ['monitoring', 'model-drift']
+            })

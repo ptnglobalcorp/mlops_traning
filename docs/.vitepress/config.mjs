@@ -170,7 +170,16 @@ export default defineConfig({
               text: 'CI/CD',
               collapsed: true,
               items: [
-                { text: 'Overview', link: '/module-03/cicd/github-actions/README' },
+                { text: 'Overview', link: '/module-03/cicd/README' },
+                { text: 'CI/CD Fundamentals', link: '/module-03/cicd/cicd-fundamentals' },
+                {
+                  text: 'GitHub Actions',
+                  collapsed: true,
+                  items: [
+                    { text: 'Overview', link: '/module-03/cicd/github-actions/README' },
+                  ]
+                },
+                { text: 'MLOps Pipelines', link: '/module-03/cicd/mlops-pipelines' },
               ]
             },
             {
