@@ -71,7 +71,7 @@ volumes:
 
 1. **Learn ConfigMaps**: [ConfigMaps](configmaps.md)
 2. **Understand Secrets**: [Secrets](secrets.md)
-3. **Practice**: [Lab 04: Configuration](../../../module-01/k8s-labs/04-configmaps-secrets/)
+3. **Practice**: [Lab 04: Configuration](../../../module-01/k8s/04-configmaps-secrets/)
 
 ---
 

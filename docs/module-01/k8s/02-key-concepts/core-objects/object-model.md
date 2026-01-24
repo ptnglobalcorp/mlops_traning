@@ -478,7 +478,7 @@ spec:
 1. **Learn Namespaces**: [Namespaces](namespaces.md)
 2. **Understand Pods**: [Pods](pods.md)
 3. **Master Labels & Selectors**: [Labels & Selectors](labels-selectors.md)
-4. **Practice**: [Lab 02: First Deployment](../../../module-01/k8s-labs/02-first-deployment/)
+4. **Practice**: [Lab 02: First Deployment](../../../module-01/k8s/02-first-deployment/)
 
 ---
 
@@ -487,6 +487,6 @@ spec:
 - [Pods](pods.md)
 - [Labels & Selectors](labels-selectors.md)
 
-**Practice:** [Lab 02: First Deployment](../../../module-01/k8s-labs/02-first-deployment/)
+**Practice:** [Lab 02: First Deployment](../../../module-01/k8s/02-first-deployment/)
 
 **Return to:** [Core Objects](README.md) | [Key Concepts](../README.md)

@@ -5,11 +5,11 @@
 ## Quick Start
 
 1. **Read the conceptual guides** in this folder
-2. **Practice with labs** in [`../../../module-01/k8s-labs/`](../../../module-01/k8s-labs/)
+2. **Practice with labs** in [`../../../module-01/k8s/`](../../../module-01/k8s/)
 
 ```
 Learn:  docs/module-01/k8s/       →  Theory and concepts
-Do:     module-01/k8s-labs/        →  Hands-on practice
+Do:     module-01/k8s/             →  Hands-on practice
 ```
 
 ## Learning Objectives
@@ -198,13 +198,13 @@ kubectl get events
 ## Next Steps
 
 After completing this section:
-1. Practice with real-world scenarios in [`../../../module-01/k8s-labs/`](../../../module-01/k8s-labs/)
+1. Practice with real-world scenarios in [`../../../module-01/k8s/`](../../../module-01/k8s/)
 2. Deploy an ML model as a Kubernetes service
 3. Explore Kubernetes monitoring and observability
 4. Learn about GitOps with ArgoCD/Flux
 
 ---
 
-**Practice Labs:** [../../../module-01/k8s-labs/](../../../module-01/k8s-labs/)
+**Practice Labs:** [../../../module-01/k8s/](../../../module-01/k8s/)
 
 **Return to:** [Module 1](./README.md) | [Study Guide](../../README.md)

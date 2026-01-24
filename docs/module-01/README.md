@@ -120,7 +120,7 @@ By the end of this module, you will be able to:
 - [Monitoring](k8s/05-monitoring/README.md) - Observability
 
 **Practice:**
-- [`module-01/k8s-labs/`](../../module-01/k8s-labs/) - K8s hands-on practice
+- [`module-01/k8s/`](../../module-01/k8s/) - K8s hands-on practice
 
 ## Prerequisites
 

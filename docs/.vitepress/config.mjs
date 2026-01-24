@@ -35,7 +35,7 @@ export default defineConfig({
             { text: 'Module Overview', link: '/module-01/README' },
             {
               text: 'Git for Teams',
-              collapsed: false,
+              collapsed: true,
               items: [
                 { text: 'Overview', link: '/module-01/git/README' },
                 { text: 'Git Basics', link: '/module-01/git/git-basics' },
@@ -87,7 +87,7 @@ export default defineConfig({
               ]
             },
             {
-              text: 'Kubernetes for MLOps',
+              text: 'Kubernetes',
               collapsed: true,
               items: [
                 { text: 'Overview', link: '/module-01/k8s/README' },
@@ -175,40 +175,40 @@ export default defineConfig({
             },
             {
               text: 'Monitoring & Observability',
-              collapsed: false,
+              collapsed: true,
               items: [
                 { text: 'Quick Start with intro-to-mltp', link: '/module-03/monitoring/README' },
                 {
                   text: 'Grafana',
-                  collapsed: false,
+                  collapsed: true,
                   items: [
                     { text: 'Overview & Architecture', link: '/module-03/monitoring/grafana' },
                   ]
                 },
                 {
                   text: 'Grafana Mimir (Metrics)',
-                  collapsed: false,
+                  collapsed: true,
                   items: [
                     { text: 'Overview & Architecture', link: '/module-03/monitoring/mimir' },
                   ]
                 },
                 {
                   text: 'Grafana Loki (Logs)',
-                  collapsed: false,
+                  collapsed: true,
                   items: [
                     { text: 'Overview & Architecture', link: '/module-03/monitoring/loki' },
                   ]
                 },
                 {
                   text: 'Grafana Tempo (Traces)',
-                  collapsed: false,
+                  collapsed: true,
                   items: [
                     { text: 'Overview & Architecture', link: '/module-03/monitoring/tempo' },
                   ]
                 },
                 {
                   text: 'Grafana Pyroscope (Profiles)',
-                  collapsed: false,
+                  collapsed: true,
                   items: [
                     { text: 'Overview & Architecture', link: '/module-03/monitoring/pyroscope' },
                   ]
@@ -223,7 +223,7 @@ export default defineConfig({
 
     // Social links
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/yourusername/mlops-training' }
+      { icon: 'github', link: 'https://github.com/ptnglobalcorp/mlops_traning' }
     ],
 
     // Footer
@@ -234,7 +234,7 @@ export default defineConfig({
 
     // Edit link
     editLink: {
-      pattern: 'https://github.com/yourusername/mlops-training/edit/main/docs/:path',
+      pattern: 'https://github.com/ptnglobalcorp/mlops_traning/edit/main/docs/:path',
       text: 'Edit this page on GitHub'
     },
 

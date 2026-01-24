@@ -149,7 +149,7 @@ With K8s:    Scheduler places pods optimally → Automatic rebalancing → No ma
 ## Next Steps
 
 1. **Learn Core Objects**: [Key Concepts - Core Objects](../02-key-concepts/core-objects/README.md)
-2. **Practice Setup**: [Lab 01: Environment Setup](../../../module-01/k8s-labs/01-setup/)
+2. **Practice Setup**: [Lab 01: Environment Setup](../../../module-01/k8s/01-setup/)
 
 ---
 
@@ -157,6 +157,6 @@ With K8s:    Scheduler places pods optimally → Automatic rebalancing → No ma
 - [Key Concepts - Core Objects](../02-key-concepts/core-objects/README.md)
 - [Key Concepts - Workloads](../02-key-concepts/workloads/README.md)
 
-**Practice:** [Lab 01: Environment Setup](../../../module-01/k8s-labs/01-setup/)
+**Practice:** [Lab 01: Environment Setup](../../../module-01/k8s/01-setup/)
 
 **Return to:** [Module 1](../README.md) | [Study Guide](../../../README.md)

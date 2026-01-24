@@ -122,7 +122,7 @@ spec:
 
 1. **Learn Services**: [Services](services.md)
 2. **Understand Ingress**: [Ingress](ingress.md)
-3. **Practice**: [Lab 03: Services & Networking](../../../module-01/k8s-labs/03-services/)
+3. **Practice**: [Lab 03: Services & Networking](../../../module-01/k8s/03-services/)
 
 ---
 
@@ -131,6 +131,6 @@ spec:
 - [Ingress](ingress.md)
 - [Ingress Gateway](ingress-gateway.md)
 
-**Practice:** [Lab 03: Services](../../../module-01/k8s-labs/03-services/)
+**Practice:** [Lab 03: Services](../../../module-01/k8s/03-services/)
 
 **Return to:** [Key Concepts](../README.md) | [Overview](../../01-overview/README.md)

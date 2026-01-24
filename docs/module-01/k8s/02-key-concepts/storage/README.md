@@ -96,7 +96,7 @@ spec:
 
 1. **Learn Storage Concepts**: [Storage Concepts](storage-concepts.md)
 2. **Understand Storage Classes**: [Storage Classes](storage-classes.md)
-3. **Practice**: [Lab 04: Storage Labs](../../../module-01/k8s-labs/04-storage/)
+3. **Practice**: [Lab 04: Storage Labs](../../../module-01/k8s/04-storage/)
 
 ---
 

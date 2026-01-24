@@ -128,7 +128,7 @@ spec:                         # Desired state
 2. **Understand Namespaces**: [Namespaces](namespaces.md)
 3. **Study Pods**: [Pods](pods.md)
 4. **Master Labels & Selectors**: [Labels & Selectors](labels-selectors.md)
-5. **Practice**: [Lab 02: First Deployment](../../../module-01/k8s-labs/02-first-deployment/)
+5. **Practice**: [Lab 02: First Deployment](../../../module-01/k8s/02-first-deployment/)
 
 ---
 
@@ -138,6 +138,6 @@ spec:                         # Desired state
 - [Pods](pods.md)
 - [Labels & Selectors](labels-selectors.md)
 
-**Practice:** [Lab 02: First Deployment](../../../module-01/k8s-labs/02-first-deployment/)
+**Practice:** [Lab 02: First Deployment](../../../module-01/k8s/02-first-deployment/)
 
 **Return to:** [Overview](../01-overview/README.md) | [K8s for MLOps](../README.md)

@@ -499,7 +499,7 @@ image: myapp:v2.1.0
 2. **Understand Deployment**: [Deployment](deployment.md)
 3. **Study StatefulSet**: [StatefulSet](statefulset.md)
 4. **Explore Jobs**: [Job](job.md)
-5. **Practice**: [Lab 02: First Deployment](../../../module-01/k8s-labs/02-first-deployment/)
+5. **Practice**: [Lab 02: First Deployment](../../../module-01/k8s/02-first-deployment/)
 
 ---
 
@@ -511,6 +511,6 @@ image: myapp:v2.1.0
 - [Job](job.md)
 - [CronJob](cronjob.md)
 
-**Practice:** [Lab 02: First Deployment](../../../module-01/k8s-labs/02-first-deployment/)
+**Practice:** [Lab 02: First Deployment](../../../module-01/k8s/02-first-deployment/)
 
 **Return to:** [Key Concepts](../README.md) | [Overview](../../01-overview/README.md)
