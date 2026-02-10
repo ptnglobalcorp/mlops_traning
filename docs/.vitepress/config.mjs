@@ -165,15 +165,35 @@ export default defineConfig({
           ]
         },
         {
-          text: 'Module 2: Advanced Python',
+          text: 'Module 2: Advanced Python & FastAPI',
           collapsed: false,
           items: [
             { text: 'Module Overview', link: '/module-02/README' },
-            { text: '1. Python Typing', link: '/module-02/01-python-typing' },
-            { text: '2. Project Management with uv', link: '/module-02/02-project-management-uv' },
-            { text: '3. Data Validation with Pydantic', link: '/module-02/03-data-validation-pydantic' },
-            { text: '4. Decorators', link: '/module-02/04-decorators' },
-            { text: '5. Async/Await', link: '/module-02/05-async-await' }
+            {
+              text: 'Advanced Python',
+              collapsed: true,
+              items: [
+                { text: 'Overview', link: '/module-02/advanced-python/README' },
+                { text: '1. Python Typing', link: '/module-02/advanced-python/01-python-typing' },
+                { text: '2. Project Management with uv', link: '/module-02/advanced-python/02-project-management-uv' },
+                { text: '3. Data Validation with Pydantic', link: '/module-02/advanced-python/03-data-validation-pydantic' },
+                { text: '4. Decorators', link: '/module-02/advanced-python/04-decorators' },
+                { text: '5. Async/Await', link: '/module-02/advanced-python/05-async-await' }
+              ]
+            },
+            {
+              text: 'FastAPI',
+              collapsed: true,
+              items: [
+                { text: 'Overview', link: '/module-02/fastapi/README' },
+                { text: '1. FastAPI Fundamentals', link: '/module-02/fastapi/01-fastapi-fundamentals' },
+                { text: '2. Advanced Request Handling', link: '/module-02/fastapi/02-advanced-requests' },
+                { text: '3. API Architecture & Database', link: '/module-02/fastapi/03-api-architecture' },
+                { text: '4. ML Model Serving & Streaming', link: '/module-02/fastapi/04-ml-model-serving' },
+                { text: '5. Testing FastAPI', link: '/module-02/fastapi/05-testing' },
+                { text: '6. Production Deployment', link: '/module-02/fastapi/06-production' }
+              ]
+            }
           ]
         },
         {

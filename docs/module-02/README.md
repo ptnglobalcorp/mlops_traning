@@ -1,185 +1,143 @@
-# Module 02: Advanced Python
+# Module 2: Advanced Python & FastAPI
 
-**Master advanced Python concepts essential for MLOps engineering**
+**Master Python fundamentals and build production ML APIs**
 
 ## Overview
 
-This module covers advanced Python topics that form the foundation of modern MLOps development: type safety, project management, data validation, code patterns, and asynchronous programming.
+Module 2 provides the Python foundation and API development skills essential for MLOps engineering. You'll master advanced Python concepts, then apply them to build production-ready ML APIs with FastAPI.
 
 ## Learning Objectives
 
-After completing this module, you will:
+By the end of this module, you will be able to:
 
 - Write type-safe Python code with comprehensive type hints
-- Manage Python projects efficiently with uv
-- Validate data robustly with Pydantic
-- Apply decorator patterns for cleaner code
+- Manage Python projects efficiently with modern tooling (uv)
+- Validate data robustly with Pydantic models
+- Apply decorator patterns for cleaner, more maintainable code
 - Build concurrent applications with async/await
-
-## Prerequisites
-
-- Python 3.10 or higher installed
-- Basic Python knowledge (functions, classes, imports)
-- Understanding of command-line basics
-- Familiarity with pip and virtual environments (helpful)
+- Create production-ready REST APIs with FastAPI
+- Integrate databases with SQLAlchemy and Alembic
+- Serve ML models with streaming capabilities
+- Test APIs comprehensively
+- Deploy APIs to production
 
 ## Module Structure
 
-This module follows a **dual-path learning approach**:
+This module consists of two major sections:
 
-1. **Theory** (this directory): Comprehensive conceptual guides
-2. **Hands-On Labs** (`module-02/advanced-python/`): Practical exercises
+### Part A: Advanced Python Foundations
 
-### Recommended Learning Path
+Build the Python skills needed for modern MLOps development
 
-For each topic, follow this sequence:
+### Part B: FastAPI for ML APIs
 
-1. **Read theory documentation** (this directory)
-2. **Complete hands-on lab** (practical exercises)
-3. **Review examples** (reference implementations)
-4. **Build something** (apply what you learned)
+Apply Python skills to build production ML serving infrastructure
 
-## Topics
+## Prerequisites
 
-### 1. Python Typing
+- **Python Experience**: Intermediate Python (functions, classes, modules)
+- **Command Line**: Comfortable with terminal/command prompt
+- **Development Environment**: Python 3.10+ installed
+- **Module 1**: Git fundamentals (helpful for collaboration)
 
-**Theory:** [Python Typing](./01-python-typing.md)
-**Lab:** [Typing Hands-On Lab](../module-02/advanced-python/01-typing/README.md)
+## Study Path
 
-Learn to write type-safe Python code:
+### Part A: Advanced Python
 
-- Basic type annotations (str, int, float, bool)
-- Collection types (list, dict, set, tuple)
-- Optional and Union types
-- Type aliases and NewType
-- Generic types with TypeVar
-- Protocol for structural typing
-- Integration with mypy/pyright
+**Core Concepts:**
 
-**Why it matters:** Type hints catch bugs early, improve IDE support, and make code self-documenting.
+1. **[Python Typing](./advanced-python/01-python-typing.md)**
+   - Type annotations for better code quality
+   - Generic types and protocols
+   - Type checker integration (mypy/pyright)
+   - **Why**: Catch bugs early, improve IDE support
 
-### 2. Project Management with uv
+2. **[Project Management with uv](./advanced-python/02-project-management-uv.md)**
+   - Modern Python project setup
+   - Dependency management and lock files
+   - Development vs production dependencies
+   - **Why**: 10-100x faster than pip, reproducible builds
 
-**Theory:** [Project Management with uv](./02-project-management-uv.md)
-**Lab:** [uv Hands-On Lab](../module-02/advanced-python/02-uv/README.md)
+3. **[Data Validation with Pydantic](./advanced-python/03-data-validation-pydantic.md)**
+   - Robust data models with automatic validation
+   - Custom validators and constraints
+   - JSON serialization/deserialization
+   - **Why**: Powers FastAPI, prevents runtime errors
 
-Master modern Python project management:
+4. **[Decorators](./advanced-python/04-decorators.md)**
+   - Function and class decorators
+   - Practical patterns (logging, caching, retry)
+   - Decorator composition
+   - **Why**: Reduce boilerplate, separation of concerns
 
-- Creating projects with `uv init`
-- Managing dependencies with lock files
-- Separating dev and runtime dependencies
-- Working with multiple Python versions
-- Defining project scripts
-- CI/CD integration
+5. **[Async/Await](./advanced-python/05-async-await.md)**
+   - Asynchronous programming fundamentals
+   - Concurrent task execution
+   - Async HTTP and file I/O
+   - **Why**: Essential for high-performance APIs
 
-**Why it matters:** uv is 10-100x faster than pip and ensures reproducible builds across teams.
+**Study Guide:**
 
-### 3. Data Validation with Pydantic
+- **Week 1**: Types and Tools (Typing, uv)
+- **Week 2**: Validation and Patterns (Pydantic, Decorators)
+- **Week 3**: Async Programming (async/await)
 
-**Theory:** [Data Validation with Pydantic](./03-data-validation-pydantic.md)
-**Lab:** [Pydantic Hands-On Lab](../module-02/advanced-python/03-pydantic/README.md)
+**[➜ Start with Advanced Python](./advanced-python/README.md)**
 
-Build robust data models:
+---
 
-- BaseModel fundamentals
-- Field validation and constraints
-- Custom validators
-- Nested models
-- JSON serialization
-- FastAPI integration
-- Pydantic v2 features
+### Part B: FastAPI for ML APIs
 
-**Why it matters:** Pydantic prevents data errors at runtime and powers FastAPI, essential for ML APIs.
+**Building Production APIs:**
 
-### 4. Decorators
+1. **[FastAPI Fundamentals](./fastapi/01-fastapi-fundamentals.md)**
+   - Core FastAPI concepts and patterns
+   - Request/response models with Pydantic
+   - Dependency injection system
+   - Automatic API documentation
 
-**Theory:** [Decorators](./04-decorators.md)
-**Lab:** [Decorators Hands-On Lab](../module-02/advanced-python/04-decorators/README.md)
+2. **[Advanced Request Handling](./fastapi/02-advanced-requests.md)**
+   - File uploads for ML models and datasets
+   - Form data and multipart requests
+   - Background tasks for async processing
+   - Headers, cookies, and custom responses
 
-Master Python decorators:
+3. **[API Architecture & Database Integration](./fastapi/03-api-architecture.md)**
+   - Scalable project structure
+   - SQLAlchemy 2.0 async ORM
+   - Alembic database migrations
+   - Middleware and configuration management
 
-- Function decorator basics
-- Decorators with arguments
-- Class decorators
-- Stacking decorators
-- Built-in decorators (@property, @staticmethod, @classmethod)
-- Practical patterns (logging, caching, retry, authentication)
+4. **[ML Model Serving & Streaming](./fastapi/04-ml-model-serving.md)**
+   - Model loading and caching strategies
+   - Batch and streaming predictions
+   - Server-Sent Events (SSE) for progress updates
+   - WebSocket for real-time predictions
+   - Streaming LLM responses token-by-token
 
-**Why it matters:** Decorators reduce boilerplate and separate concerns for cleaner code.
+5. **[Testing FastAPI](./fastapi/05-testing.md)**
+   - Comprehensive API testing with pytest
+   - Testing async endpoints
+   - Database testing and fixtures
+   - Mocking dependencies
+   - Integration and load testing
 
-### 5. Async/Await
+6. **[Production Deployment](./fastapi/06-production.md)**
+   - Uvicorn and Gunicorn configuration
+   - Docker containerization
+   - Health checks and monitoring
+   - Security best practices
+   - Performance optimization
 
-**Theory:** [Async/Await](./05-async-await.md)
-**Lab:** [Async/Await Hands-On Lab](../module-02/advanced-python/05-async-await/README.md)
+**Study Guide:**
 
-Write concurrent asynchronous code:
+- **Week 4**: Core FastAPI (Fundamentals, Requests)
+- **Week 5**: Architecture & Serving (Database, ML Models, Streaming)
+- **Week 6**: Testing & Deployment (Tests, Production)
 
-- async/await syntax
-- asyncio fundamentals
-- Concurrent task execution
-- Async HTTP with aiohttp
-- Async file I/O
-- Real-world async patterns
+**[➜ Start with FastAPI](./fastapi/README.md)**
 
-**Why it matters:** Async programming enables efficient I/O-bound operations crucial for APIs and data processing.
-
-## Study Guide
-
-### Week 1: Types and Tools
-
-- **Day 1-2:** Python Typing theory + exercises
-- **Day 3-4:** uv project management + practice
-- **Day 5:** Build a typed project with uv
-
-### Week 2: Validation and Patterns
-
-- **Day 1-2:** Pydantic theory + exercises
-- **Day 3-4:** Decorators theory + exercises
-- **Day 5:** Combine Pydantic + decorators in a project
-
-### Week 3: Asynchronous Programming
-
-- **Day 1-3:** Async/await theory + exercises
-- **Day 4-5:** Build async API or data pipeline
-
-## Hands-On Practice
-
-All practical exercises are located in: `module-02/advanced-python/`
-
-Each section includes:
-
-- **README.md**: Lab overview and instructions
-- **examples/**: Reference implementations
-- **exercises/**: Practice files with TODOs
-- **solution/**: Complete solutions
-
-## Assessment
-
-Test your knowledge by building:
-
-### Project 1: Type-Safe API Client
-
-Create a fully typed HTTP client:
-- Type hints on all functions
-- Pydantic models for requests/responses
-- Decorator for retry logic
-- Async requests with aiohttp
-
-### Project 2: ML Model Server
-
-Build a FastAPI application:
-- Pydantic for input validation
-- Type hints throughout
-- Async endpoint handlers
-- Decorators for logging and metrics
-
-### Project 3: Data Pipeline
-
-Create an async data processing pipeline:
-- Type-safe data models
-- Async file/HTTP operations
-- Decorator for error handling
-- uv for dependency management
+---
 
 ## Common Patterns
 
@@ -188,110 +146,207 @@ Create an async data processing pipeline:
 ```python
 from pydantic import BaseModel, Field
 
-class DatabaseConfig(BaseModel):
-    host: str = "localhost"
-    port: int = Field(ge=1, le=65535)
-    database: str
+class AppConfig(BaseModel):
+    """Application configuration with validation."""
+    database_url: str
+    api_key: str
+    max_workers: int = Field(ge=1, le=100)
+    debug: bool = False
 
-config = DatabaseConfig(**env_vars)
+config = AppConfig(**env_vars)
 ```
 
-### Pattern 2: Cached API Calls
+### Pattern 2: Async Model Serving
 
 ```python
-from functools import lru_cache
+from fastapi import FastAPI, Depends
+from typing import Annotated
 
-@lru_cache(maxsize=128)
-def get_user_data(user_id: int) -> dict:
-    return api.fetch(f"/users/{user_id}")
+app = FastAPI()
+
+async def get_model():
+    """Load model as dependency."""
+    return await load_model_async()
+
+@app.post("/predict")
+async def predict(
+    data: PredictionInput,
+    model: Annotated[Model, Depends(get_model)]
+):
+    """Async prediction endpoint."""
+    result = await model.predict_async(data.features)
+    return {"prediction": result}
 ```
 
-### Pattern 3: Async Data Fetching
+### Pattern 3: Streaming Responses
 
 ```python
+from fastapi.responses import StreamingResponse
 import asyncio
 
-async def fetch_all(urls: list[str]) -> list[str]:
-    tasks = [fetch_url(url) for url in urls]
-    return await asyncio.gather(*tasks)
+async def generate_predictions(data_stream):
+    """Stream predictions as they're computed."""
+    for batch in data_stream:
+        result = await predict(batch)
+        yield f"data: {result}\n\n"
+        await asyncio.sleep(0.1)
+
+@app.post("/predict/stream")
+async def stream_predictions(data: list):
+    """Server-sent events for real-time predictions."""
+    return StreamingResponse(
+        generate_predictions(data),
+        media_type="text/event-stream"
+    )
 ```
 
-## Tools and Libraries
+## Tools and Setup
 
-Install recommended tools:
+### Required Tools
 
 ```bash
-# Type checking
-uv add --dev mypy pyright
+# Python 3.10+
+python --version
 
-# Code quality
-uv add --dev black ruff
+# Install uv (project management)
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# Testing
-uv add --dev pytest pytest-asyncio
-
-# Async libraries
-uv add aiohttp aiofiles
-
-# Data validation
-uv add pydantic
+# Install PostgreSQL (for database practice)
+# Docker recommended for easy setup
+docker run -d \
+  --name postgres-mlops \
+  -e POSTGRES_PASSWORD=password \
+  -p 5432:5432 \
+  postgres:15-alpine
 ```
+
+### Development Environment
+
+```bash
+# Create new project
+uv init ml-api
+cd ml-api
+
+# Add core dependencies
+uv add fastapi uvicorn[standard] sqlalchemy[asyncio] alembic pydantic
+
+# Add dev dependencies
+uv add --dev pytest pytest-asyncio httpx mypy ruff
+
+# Run development server
+uv run uvicorn src.main:app --reload
+```
+
+## Assessment Criteria
+
+Demonstrate mastery by:
+
+1. **Code Quality**
+   - [ ] All code is fully type-hinted
+   - [ ] Pydantic models for all data structures
+   - [ ] Proper async/await usage
+   - [ ] Clean decorator implementation
+
+2. **API Development**
+   - [ ] RESTful API design principles
+   - [ ] Proper error handling
+   - [ ] Database integration working
+   - [ ] Streaming endpoints functional
+
+3. **Testing**
+   - [ ] > 80% test coverage
+   - [ ] All endpoints tested
+   - [ ] Database operations tested
+   - [ ] Integration tests passing
+
+4. **Production Readiness**
+   - [ ] Docker containerization
+   - [ ] Health checks implemented
+   - [ ] Logging and monitoring
+   - [ ] Security best practices
+
+## Learning Resources
+
+### Documentation
+
+- [Python Type Hints (PEP 484)](https://peps.python.org/pep-0484/)
+- [uv Documentation](https://github.com/astral-sh/uv)
+- [Pydantic v2 Docs](https://docs.pydantic.dev/)
+- [FastAPI Documentation](https://fastapi.tiangolo.com/)
+- [SQLAlchemy 2.0 Docs](https://docs.sqlalchemy.org/en/20/)
+
+### Video Tutorials
+
+- [FastAPI Course (freeCodeCamp)](https://www.youtube.com/watch?v=0sOvCWFmrtA)
+- [Python Async/Await Explained](https://realpython.com/async-io-python/)
+
+### Practice Platforms
+
+- [Real Python](https://realpython.com/) - Python tutorials
+- [TestDriven.io](https://testdriven.io/) - FastAPI projects
 
 ## Troubleshooting
 
 ### Type Checker Issues
 
-If mypy reports errors:
-
 ```bash
-# Check Python version
-mypy --python-version 3.10 src/
+# Run mypy on your code
+mypy src/ --strict
 
-# Strict mode
-mypy --strict src/
+# Common fixes
+# - Add return type hints to all functions
+# - Use Optional[T] for nullable values
+# - Import types from typing module
 ```
 
-### uv Installation
-
-If uv command not found:
-
-```bash
-# Add to PATH (macOS/Linux)
-export PATH="$HOME/.cargo/bin:$PATH"
-
-# Windows PowerShell
-$env:PATH += ";$HOME\.cargo\bin"
-```
-
-### Async Debugging
-
-Common async mistakes:
+### Async Errors
 
 ```python
-# Wrong: Forgot await
-result = async_function()  # Returns coroutine, not result
+# Wrong: Missing await
+result = async_function()  # Returns coroutine!
 
 # Correct: Use await
 result = await async_function()
+
+# Wrong: Blocking call in async
+def blocking_call():
+    time.sleep(5)
+
+# Correct: Use asyncio.to_thread
+await asyncio.to_thread(blocking_call)
+```
+
+### Database Connection Issues
+
+```bash
+# Check PostgreSQL is running
+docker ps | grep postgres
+
+# Test connection
+psql postgresql://user:pass@localhost:5432/dbname
+
+# Run Alembic migrations
+alembic upgrade head
 ```
 
 ## Next Steps
 
-After completing Module 02:
+After completing Module 2:
 
-1. **Module 03**: CI/CD and Monitoring
-2. **Apply skills**: Build a complete MLOps project
-3. **Deep dive**: Explore advanced async patterns
-4. **Contribute**: Share your learnings
+1. **Module 3: CI/CD & Deployment**
+   - Automated testing pipelines
+   - Container orchestration with Kubernetes
+   - Monitoring and observability
 
-## Additional Resources
+2. **Build Your Portfolio**
+   - Deploy your ML API to production
+   - Add to GitHub with comprehensive README
+   - Share with the community
 
-- [Python Type Hints (PEP 484)](https://peps.python.org/pep-0484/)
-- [uv Documentation](https://github.com/astral-sh/uv)
-- [Pydantic Documentation](https://docs.pydantic.dev/)
-- [Python Decorators Guide](https://realpython.com/primer-on-python-decorators/)
-- [Asyncio Documentation](https://docs.python.org/3/library/asyncio.html)
-- [FastAPI Documentation](https://fastapi.tiangolo.com/)
+3. **Advanced Topics**
+   - GraphQL with Strawberry
+   - gRPC for high-performance APIs
+   - Event-driven architectures with Kafka
 
 ## Community and Support
 
@@ -301,4 +356,19 @@ After completing Module 02:
 
 ---
 
-**Ready to start?** Begin with [Python Typing](./01-python-typing.md) or jump to the [Hands-On Labs](../module-02/advanced-python/README.md).
+## Quick Navigation
+
+### Start Learning
+
+- **[Advanced Python →](./advanced-python/README.md)** - Begin with Python foundations
+- **[FastAPI →](./fastapi/README.md)** - Jump to API development
+
+### Reference
+
+- [Main Study Guide](../README.md) - Overall training navigation
+- [Module 1: Infrastructure](../module-01/README.md) - Previous module
+- [Module 3: Deployment](../module-03/README.md) - Next module
+
+---
+
+**Ready to start?** Begin with [Advanced Python](./advanced-python/README.md) to build your Python foundations, then progress to [FastAPI](./fastapi/README.md) for production API development.
